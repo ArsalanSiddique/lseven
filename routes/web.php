@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Http\Request;
+#use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +26,13 @@ Route::get('/user', function () {
 });
 
 Route::get('/test', 'userController@index');
+Auth::routes();
+
+
+Route::post('/upload', 'userController@uploadAvatar');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/users', function () {
+    return view('users');
+});

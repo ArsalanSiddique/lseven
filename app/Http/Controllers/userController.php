@@ -6,12 +6,27 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
 
+
 class userController extends Controller
 {
+
+
+    public function uploadAvatar(Request $request)
+    {
+        if ($request->hasFile('image')) {
+
+            User::uploadAvatar($request->image);
+            
+            return redirect()->back()->with('message', "Avatar Uploaded");
+        }
+        
+        return redirect()->back()->with('error', 'Avatar Not Uploaded');
+    }
+
+
+
     public function index()
     {
-
-
 
         // $user = new User();
         // $user->name = "Arsalan Ahmed";

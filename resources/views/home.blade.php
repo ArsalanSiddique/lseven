@@ -16,12 +16,10 @@
 
                     {{ __('You are logged in!') }}
 
-
-                    @if(session()->has('message'))
-                    <div class="alert alert-success">{{ session()->get('message') }}</div>
-                    @elseif(session()->has('error'))
-                    <div class="alert alert-danger">{{ session()->get('error') }}</div>
-                    @endif
+                    <!-- @include("layouts.alert") -->
+                    <x-alert />
+                      
+                    
 
                     <form action="/upload" method="POST" class="mt-3" enctype="multipart/form-data">
                         @csrf

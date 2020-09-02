@@ -17,6 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+// Todos routes steat here
+Route::get('/todos', 'TodoController@index')->name("todo.index");
+Route::get('/todos/create', 'TodoController@create');
+Route::post('/todos/create', 'TodoController@store');
+// Route::get('/todos/{todo:title}/edit', 'TodoController@edit');
+Route::get('/todos/{todo}/edit', 'TodoController@edit');
+Route::patch('/todos/{todo}/update', 'TodoController@update')->name("todo.update");
+// Todos routes end steat here
+
+
 Route::get('/', function () {
     return view('welcome');
 });

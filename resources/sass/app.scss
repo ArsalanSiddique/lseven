@@ -1,8 +1,17 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+// Font Awesome
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+.section {
+    width: 100%;
+    background-color: white;
+    color: black;
+    padding: 24px;
+    margin: 4px;
+    border-radius: 10px;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15);
+}

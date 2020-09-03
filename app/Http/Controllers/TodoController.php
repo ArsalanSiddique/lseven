@@ -10,6 +10,10 @@ use App\Todo;
 class TodoController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware("auth")->except("index");
+    }
 
     public function index()
     {
@@ -63,4 +67,20 @@ class TodoController extends Controller
         $todo->update(["title" => $request->title]);
         return redirect(route("todo.index"))->with("message", "Todo Updated.");
     }
+
+    public function complete(Todo $todo) {
+        if($todo->completed) {
+            $todo->update(["completed" => false]);
+            return redirect()->back()->with("message", "Todo marked as Incompleted.");
+        }else {
+            $todo->update(["completed" => true]);
+            return redirect()->back()->with("message", "Todo marked as completed.");
+        }
+    }
+
+    public function destroy(Todo $todo) {
+        $todo->delete();
+        return redirect()->back()->with("message", "Todo deleted successfully.");
+    }
+    
 }

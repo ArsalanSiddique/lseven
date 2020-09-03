@@ -7,7 +7,7 @@
     <div class="col-lg-5 col-xs-12 m-auto">
         <div class="section">
             <x-alert />
-            <form action="/todos/create" method="POST">
+            <form action="{{ route('todo.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="title" class="font-weight-bold">Title:</label>
@@ -15,7 +15,7 @@
                 </div>
                 <input type="submit" value="Submit" class="btn btn-primary btn-block">
                 <div style="display: flex;justify-content:center;">
-                    <a href="/todos" class="btn btn-light mt-3">Go Back</a>
+                    <a href="{{ route('todo.index') }}" class="btn btn-light mt-3">Go Back</a>
                 </div>
             </form>
         </div>

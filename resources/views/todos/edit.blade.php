@@ -16,7 +16,7 @@
                 </div>
                 <input type="submit" value="Update Todo" class="btn btn-primary btn-block">
                 <div style="display: flex;justify-content:center;">
-                    <a href="/todos" class="btn btn-light mt-3">Go Back</a>
+                    <a href="{{ route('todo.index') }}" class="btn btn-light mt-3">Go Back</a>
                 </div>
             </form>
         </div>

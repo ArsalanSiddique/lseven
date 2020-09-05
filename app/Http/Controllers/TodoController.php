@@ -6,18 +6,24 @@ use App\Http\Requests\TodoFormRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Todo;
+use App\User;
+
 
 class TodoController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware("auth")->except("index");
+        // $this->middleware("auth")->except("index");
+        $this->middleware("auth");
     }
 
     public function index()
     {
-        $todos = Todo::orderby("completed")->get();
+
+        // $todos = Todo::orderby("completed")->get();
+        // $todos = auth()->user()->todos()->orderby("completed")->get();
+        $todos = auth()->user()->todos->sortBy("completed");
         return view("todos.index", compact("todos"));
     }
 
@@ -51,7 +57,12 @@ class TodoController extends Controller
         //         ->withInput();
         // }
 
-        Todo::create($request->all());
+
+        // $user_id = auth()->id();
+        // $request["user_id"] = $user_id;
+        // Todo::create($request->all());
+
+        auth()->user()->todos()->create($request->all());
 
         return redirect()->back()->with("message", "Todo added successfully");
     }
@@ -64,7 +75,7 @@ class TodoController extends Controller
 
     public function update(TodoFormRequest $request, Todo $todo)
     {
-        $todo->update(["title" => $request->title]);
+        $todo->update(["title" => $request->title, "description" => $request->description]);
         return redirect(route("todo.index"))->with("message", "Todo Updated.");
     }
 
@@ -76,6 +87,10 @@ class TodoController extends Controller
             $todo->update(["completed" => true]);
             return redirect()->back()->with("message", "Todo marked as completed.");
         }
+    }
+
+    public function show(Todo $todo) {
+        return view("todos.show", compact("todo"));
     }
 
     public function destroy(Todo $todo) {

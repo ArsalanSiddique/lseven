@@ -26,8 +26,18 @@
                             <span class="font-weight-bolder">Description:</span>
                             <p> {{ $todo->description }}</p>
                         </div>
+                        <div class="text-center">
+                            <h3 class="font-weight-bold mt-3 mb-3" style="text-align: center;">Todo Steps</h3>
+                        </div>
+                        <div class="col-12">
+                            @if($todo->steps->count() > 0)
 
+                            @foreach($todo->steps as $step)
+                            <p> <b>Step {{ $loop->index+1 }}: &nbsp;</b> {{ $step->steps }}</p>
+                            @endforeach
 
+                            @endif
+                        </div>
 
                     </div>
                     <hr />

@@ -18,6 +18,19 @@
                     <label for="description" class="font-weight-bold">Description:</label>
                     <textarea name="description" id="description" class="form-control" rows="5" cols="30">{{ $todo->description }}</textarea>
                 </div>
+
+                <h3 class="text-center font-weight-bold">Update Steps</h3>
+                <hr>
+
+                @if($todo->steps->count() > 0)
+                @foreach($todo->steps as $step)
+                <div class="form-group">
+                    <label for="step_{{ $loop->index+1 }}" class="font-weight-bold">Step {{ $loop->index+1 }}:</label>
+                    <input type="text" name="steps[]" value="{{ $step->steps }}" class="form-control" placeholder="Define your steps">
+                </div>
+                @endforeach
+                @endif
+
                 <input type="submit" value="Update Todo" class="btn btn-primary btn-block">
                 <hr>
                 <div style="display: flex;justify-content:center;">

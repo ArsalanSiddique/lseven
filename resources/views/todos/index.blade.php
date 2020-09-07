@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h2 class="text-center mt-5 mb-5 font-weight-bolder">All your todos <span><a href="{{ route('todo.create') }}" class="btn btn-primary ml-5 mb-2"><i class="fa fa-plus pr-2"></i> Add</a></span> </h2>
-<div class="row">
+<h2 class="text-center mt-5 font-weight-bolder">All Your Todos <span><a href="{{ route('todo.create') }}" class="btn btn-primary ml-5 mb-2"><i class="fa fa-plus pr-2"></i> Add</a></span> </h2>
+<div class="row mt-5 mb-5">
     <div class="col-md-5 col-sm-8 col-xs-12 m-auto">
         <div class="section">
             <x-alert />

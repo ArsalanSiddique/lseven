@@ -6,6 +6,7 @@ use App\Http\Requests\TodoFormRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Todo;
+use App\Steps;
 use App\User;
 
 
@@ -82,7 +83,21 @@ class TodoController extends Controller
 
     public function update(TodoFormRequest $request, Todo $todo)
     {
+
         $todo->update(["title" => $request->title, "description" => $request->description]);
+        if ($request->stepsName) {
+            foreach ($request->stepsName as $key => $value) {
+                $id = $request->stepsId[$key];
+
+                if (!$id) {
+                    $todo->steps()->create(["steps" => $value]);
+                } else {
+                    $step = Steps::find($id);
+                    $step->update(["steps" => $value]);
+                }
+            }
+        }
+
         return redirect(route("todo.index"))->with("message", "Todo Updated.");
     }
 

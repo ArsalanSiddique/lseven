@@ -2,9 +2,9 @@
 
 @section('content')
 
-<h2 class="text-center mt-5 mb-3 font-weight-bolder">A simple Todo App</h2>
+<h2 class="text-center mt-5 mb-3 font-weight-bolder">A Simple Todo App</h2>
 
-<div class="row mt-4">
+<div class="row mp-5 mb-5">
     <div class="col-lg-5 col-xs-12 m-auto">
         <div class="section">
             <x-alert />
